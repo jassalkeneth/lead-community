@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  :root {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-mono, [data-tabular="true"] {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media screen {
+  .lead-app {
+    --glass-solid: #f5f8ff;
+    --glass-fill: rgba(255, 255, 255, 0.64);
+    --glass-tile: rgba(255, 255, 255, 0.42);
+    --glass-soft: rgba(226, 232, 250, 0.34);
+    --glass-edge: rgba(148, 163, 184, 0.24);
+    --glass-shadow: 0 12px 40px rgba(55, 75, 120, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --glass-overlay: rgba(30, 41, 70, 0.24);
+    --chart-label: #52627a;
+    background:
+      radial-gradient(ellipse at 8% 12%, rgba(165, 180, 252, 0.38), transparent 45%),
+      radial-gradient(ellipse at 90% 20%, rgba(125, 211, 252, 0.3), transparent 42%),
+      radial-gradient(ellipse at 65% 90%, rgba(196, 181, 253, 0.3), transparent 45%),
+      #eef3fb;
+    background-attachment: fixed;
+    font-size: 0.875rem;
+  }
+
+  .dark .lead-app {
+    --glass-solid: #172237;
+    --glass-fill: rgba(19, 30, 50, 0.78);
+    --glass-tile: rgba(39, 55, 80, 0.45);
+    --glass-soft: rgba(51, 65, 85, 0.32);
+    --glass-edge: rgba(148, 163, 184, 0.2);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(203, 213, 225, 0.08);
+    --glass-overlay: rgba(2, 6, 23, 0.45);
+    --chart-label: #b2c0d3;
+    background:
+      radial-gradient(ellipse at 8% 12%, rgba(79, 70, 229, 0.22), transparent 45%),
+      radial-gradient(ellipse at 90% 20%, rgba(14, 116, 144, 0.2), transparent 42%),
+      radial-gradient(ellipse at 65% 90%, rgba(109, 40, 217, 0.16), transparent 45%),
+      #0c1424;
+    background-attachment: fixed;
+  }
+
+  .lead-app :is(.glass-panel, .glass-dialog, .glass-nav) {
+    background: var(--glass-solid);
+    border-color: var(--glass-edge);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .lead-app :is(.glass-panel, .glass-dialog) {
+    border-radius: 1.125rem;
+  }
+
+  .lead-app .glass-tile {
+    background: var(--glass-tile);
+    border-color: var(--glass-edge);
+    border-radius: 0.875rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .lead-app .glass-soft {
+    background: var(--glass-soft);
+  }
+
+  .lead-app .glass-overlay {
+    background: var(--glass-overlay);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .lead-app :is(.glass-panel, .glass-dialog, .glass-nav) {
+      background: var(--glass-fill);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      backdrop-filter: blur(20px) saturate(135%);
+    }
+  }
+
+  .lead-app :is(input, select, textarea) {
+    background-color: var(--glass-tile);
+    border-color: var(--glass-edge);
+  }
+
+  .lead-app select option {
+    background-color: var(--glass-solid);
+    color: #1e293b;
+  }
+
+  .dark .lead-app select option {
+    color: #e2e8f0;
+  }
+
+  .lead-app :is(.border-slate-100, .border-slate-200, .border-slate-300, .border-slate-700, .border-slate-800) {
+    border-color: var(--glass-edge);
+  }
+
+  .lead-app :is(.font-bold, .font-extrabold, .font-black) {
+    font-weight: 600;
+  }
+
+  .lead-app .font-semibold {
+    font-weight: 500;
+  }
+
+  .lead-app .font-mono {
+    font-family: inherit;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .lead-app .uppercase {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  .lead-app h1[class] {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+
+  .lead-app :is(h2, h3)[class] {
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
+  .lead-app .text-4xl {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  .lead-app :is(.text-slate-400, .text-slate-500) {
+    color: #52627a;
+  }
+
+  .dark .lead-app :is(.text-slate-400, .text-slate-500) {
+    color: #b2c0d3;
+  }
+
+  .lead-app .text-emerald-500 {
+    color: #047857;
+  }
+
+  .lead-app .text-amber-500 {
+    color: #92400e;
+  }
+
+  .dark .lead-app .text-emerald-500 {
+    color: #34d399;
+  }
+
+  .dark .lead-app .text-amber-500 {
+    color: #fbbf24;
+  }
+
+  .lead-app .report-paper {
+    background: #fff;
+    color: #0f172a;
+  }
+
+  .lead-app .report-paper :is(.text-slate-400, .text-slate-500) {
+    color: #52627a;
+  }
+
+  .lead-app :is(.recharts-cartesian-axis-tick-value, .recharts-polar-angle-axis-tick-value, .recharts-polar-radius-axis-tick-value) {
+    fill: var(--chart-label);
+  }
+
+  .lead-app :is(button, summary, input, select, textarea):focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 3px;
+  }
+
+  .lead-app button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}

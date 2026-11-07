@@ -1,0 +1,6 @@
+{
+  "name": "Lead - Community Performance & KPI Platform",
+  "description": "Enterprise-grade community performance management, 10-KPI weighted scoring engine, approval workflows, audit trails, and AI-powered operational copilot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
