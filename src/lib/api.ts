@@ -9,6 +9,7 @@ import {
   Team,
   User,
 } from '../types/index.ts';
+import { runScoringEngineTests } from '../scoring/scoringEngine.ts';
 
 class ApiClient {
   private currentUser: User = {
@@ -246,9 +247,9 @@ class ApiClient {
   }
 
   async runTests() {
-    const res = await fetch('/api/tests/run', { headers: this.getHeaders() });
-    if (!res.ok) throw new Error('Failed to run tests');
-    return res.json();
+    // The scoring engine is deterministic pure TS already shipped to the
+    // browser — run it in-process instead of round-tripping through the API.
+    return runScoringEngineTests();
   }
 }
 
